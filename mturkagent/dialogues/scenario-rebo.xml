@@ -318,6 +318,7 @@
             <step>
                 <initiation>positiveExp</initiation>
                 <response push="goalPosEmotions">pos_annotation</response>
+                <response push="goalFakeEmotionsLength">fake_length</response>
                 <response>unanticipated-response</response>
             </step>
         </goal>
@@ -332,8 +333,11 @@
         <goal name="goalNegJudgementAskFurther">
             <step>
                 <initiation>negativExpAskFurther</initiation>
+                <response push="goalYesEmotions">fake_yes_annotation</response>
+                <response push="goalNoEmotions">fake_no_annotation</response>
                 <response push="goalPosEmotions">pos_annotation</response>
                 <response push="goalNegEmotions">neg_annotation</response>
+                <response push="goalFakeEmotionsLength">fake_length</response>
                 <response>unanticipated-response</response>
             </step>
         </goal>
