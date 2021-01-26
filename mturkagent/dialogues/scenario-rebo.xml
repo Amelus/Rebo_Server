@@ -317,6 +317,7 @@
         <goal name="goalPosJudgement" difficulty="1">
             <step>
                 <initiation>positiveExp</initiation>
+                <response push="goalPosEmotions">pos_annotation</response>
                 <response>unanticipated-response</response>
             </step>
         </goal>
@@ -331,6 +332,8 @@
         <goal name="goalNegJudgementAskFurther">
             <step>
                 <initiation>negativExpAskFurther</initiation>
+                <response push="goalPosEmotions">pos_annotation</response>
+                <response push="goalNegEmotions">neg_annotation</response>
                 <response>unanticipated-response</response>
             </step>
         </goal>
