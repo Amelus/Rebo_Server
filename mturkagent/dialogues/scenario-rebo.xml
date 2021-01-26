@@ -267,17 +267,7 @@
                 <response push="goalNegJudgement">neg_annotation</response>
                 <response push="goalFakeJudgement">fake_judgement_annotation</response>
                 <response push="goalFakeJudgementLength">fake_length</response>
-                <response>unanticipated-response</response>
-            </step>
-
-            <step>
-                <initiation>emotions</initiation>
-                <response push="goalYesEmotions">fake_yes_annotation</response>
-                <response push="goalNoEmotions">fake_no_annotation</response>
-                <response push="goalPosEmotions">pos_annotation</response>
-                <response push="goalNegEmotions">neg_annotation</response>
-                <response push="goalFakeEmotionsLength">fake_length</response>
-                <response>unanticipated-response</response>
+                <response push="goalNeutralJudgement">unanticipated-response</response>
             </step>
 
             <step>
@@ -350,7 +340,7 @@
                 <initiation>fakeJudgement</initiation>
                 <response push="goalPosJudgement">pos_annotation</response>
                 <response push="goalNegJudgement">neg_annotation</response>
-                <response>unanticipated-response</response>
+                <response push="goalNeutralJudgement">unanticipated-response</response>
             </step>
         </goal>
 
@@ -359,11 +349,23 @@
                 <initiation>fakeReflection</initiation>
                 <response push="goalPosJudgement">pos_annotation</response>
                 <response push="goalNegJudgement">neg_annotation</response>
-                <response>unanticipated-response</response>
+                <response push="goalNeutralJudgement">unanticipated-response</response>
             </step>
         </goal>
 
         <!-- Emotions reactions -->
+
+        <goal name="goalNeutralJudgement">
+            <step>
+                <initiation>emotions</initiation>
+                <response push="goalYesEmotions">fake_yes_annotation</response>
+                <response push="goalNoEmotions">fake_no_annotation</response>
+                <response push="goalPosEmotions">pos_annotation</response>
+                <response push="goalNegEmotions">neg_annotation</response>
+                <response push="goalFakeEmotionsLength">fake_length</response>
+                <response>unanticipated-response</response>
+            </step>
+        </goal>
 
         <goal name="goalPosEmotions" difficulty="1">
             <step>
