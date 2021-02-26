@@ -258,6 +258,12 @@
          one main goal with multiple steps, and subgoals that it may reference. -->
     <script>
         <goal name="start" difficulty="1">
+
+            <step>
+                <initiation>revisit</initiation>
+                <response>unanticipated-response</response>
+            </step>
+
             <step>
                 <initiation>description</initiation>
                 <response push="goalFakeDescriptionLength">fake_length</response>
