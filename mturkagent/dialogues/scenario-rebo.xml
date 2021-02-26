@@ -37,9 +37,14 @@
 
     <concepts>
 
+        <concept label="revisit">
+            <phrase>Über welche Aufgabe unterhalten wir uns heute?</phrase>
+            <phrase>Über welche Aufgabe möchtest du mit mir reflektieren?</phrase>
+            <phrase>Über welche Aufgabe willst du heute mit mir reflektieren?</phrase>
+        </concept>
+
         <concept label="description">
-            <phrase>Erkläre mir genau, über welche Arbeit wir uns heute unterhalten und wie du sie gemacht hast.</phrase>
-            <phrase>Und was hast du heute alles so gemacht? Erkläre es mir mal Schritt für Schritt.</phrase>
+            <phrase>Was hast du dabei so gemacht? Erkläre es mir mal Schritt für Schritt.</phrase>
             <phrase>Beschreib mir mal, wie du bei der Bearbeitung dieser Aufgabe vorgegangen bist!</phrase>
             <phrase>Erzähl mal: was hast du bei dieser Aufgabe alles so gemacht? Schritt für Schritt ... </phrase>
         </concept>
@@ -52,7 +57,6 @@
             <phrase>Wie bist du mit deinem Ergebnis zufrieden?</phrase>
             <phrase>Bist du mit dem Ergebnis der Aufgabe zufrieden? Warum/Warum nicht?</phrase>
             <phrase>Wie ist das Lernen zur heutigen Übung gelaufen, hast du schon alles gut verstanden?</phrase>
-            <phrase>Welches Wissen konntest du heute gut anwenden?</phrase>
         </concept>
 
         <concept label="positiveExp">
@@ -106,8 +110,7 @@
         </concept>
 
         <concept label="learning">
-            <phrase>Welchen Tipp könntest du einem jüngeren Lehrling geben, der einen solchen Auftrag zum ersten Mal ausführt?
-            </phrase>
+            <phrase>Welchen Tipp könntest du einem jüngeren Lehrling geben, der einen solchen Auftrag zum ersten Mal ausführt?</phrase>
             <phrase>Was hast du für dich aus der Aufgabe gelernt?</phrase>
             <phrase>Was konntest du von dieser Aufgabe mitnehmen?</phrase>
             <phrase>Was würdest du sagen hast du durch diese Aufgabe dazugelernt?</phrase>
