@@ -156,14 +156,14 @@ function isBlank(str)
 function filterNonASCII(str)
 {
     let convertedUmlauts = str.replaceAll('\u00dc', 'UE')
-        .replaceAll('\u00c4', 'AE')
-        .replaceAll('\u00d6', 'OE')
-        .replaceAll('\u00fc', 'ue')
-        .replaceAll('\u00e4', 'ae')
-        .replaceAll('\u00f6', 'oe')
-        .replaceAll('\u00df', 'ss');
+        .replace(/\u00c4/g, 'AE')
+        .replace(/\u00d6/g, 'OE')
+        .replace(/\u00fc/g, 'ue')
+        .replace(/\u00e4/g, 'ae')
+        .replace(/\u00f6/g, 'oe')
+        .replace(/\u00df/g, 'ss');
 
-    return convertedUmlauts.replaceAll(/[^\x00-\x7F]/g, '');
+    return convertedUmlauts.replace(/[^\x00-\x7F]/g, '');
 }
 
 var header_stuff = "<head>\n"+
