@@ -155,7 +155,7 @@ function isBlank(str)
 
 function filterNonASCII(str)
 {
-    let convertedUmlauts = str.replaceAll('\u00dc', 'UE')
+    let convertedUmlauts = str.replace(/\u00dc/g, 'UE')
         .replace(/\u00c4/g, 'AE')
         .replace(/\u00d6/g, 'OE')
         .replace(/\u00fc/g, 'ue')
