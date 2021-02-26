@@ -152,6 +152,20 @@ function isBlank(str)
 {
     return !str || /^\s*$/.test(str)
 }
+
+function filterNonASCII(str)
+{
+    let convertedUmlauts = str.replaceAll('\u00dc', 'UE')
+        .replaceAll('\u00c4', 'AE')
+        .replaceAll('\u00d6', 'OE')
+        .replaceAll('\u00fc', 'ue')
+        .replaceAll('\u00e4', 'ae')
+        .replaceAll('\u00f6', 'oe')
+        .replaceAll('\u00df', 'ss');
+
+    return convertedUmlauts.replaceAll(/[^\x00-\x7F]/g, '');
+}
+
 var header_stuff = "<head>\n"+
 "\t<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>\n"+
 "\t<link href='http://ankara.lti.cs.cmu.edu/include/discussion.css' rel='stylesheet' type='text/css'>\n"+
@@ -275,10 +289,12 @@ function logEssay(socket, content, type)
     });
 }
 
-function logMessage(socket, content, type)
+function logMessage(socket, message, type)
 {    
     //if(chatroom_locked)
     //    return;
+
+    let filteredMessage = filterNonASCII(message);
 
     if(socket.temporary) 
     	return;
@@ -297,7 +313,7 @@ function logMessage(socket, content, type)
     query = 'insert into nodechat.message (roomid, username, useraddress, userid, content, type, timestamp)' 
                     +'values ((select id from nodechat.room where name='+connection.escape(socket.room)+'), '
                     +''+connection.escape(socket.username)+', '+connection.escape(endpoint.address+':'+endpoint.port)+', '
-                    +connection.escape(socket.Id) +', '+connection.escape(content)+', '+connection.escape(type)+', now());';
+                    +connection.escape(socket.Id) +', '+connection.escape(filteredMessage)+', '+connection.escape(type)+', now());';
     
     connection.query(query, function(err, rows, fields) 
     {
@@ -335,7 +351,6 @@ function checkEssayAlreadyWritten(room, callback) {
     });
 }
 
-
 function checkFirstJoin(room, callback) {
     count = 0;
 
@@ -358,10 +373,16 @@ io.sockets.on('connection', function (socket) {
         if(isBlank(username)) {
 	        origin = socket.handshake.address
 	        username = "Guest "+(origin.address+origin.port).substring(6).replace(/\./g, '');
-	    }
+	    } else {
+            username = filterNonASCII(username);
+        }
 	   
-        if(isBlank(room))
+        if(isBlank(room)) {
             room = "Limbo"
+        } else {
+            room = filterNonASCII(room);
+        }
+
 
         //don't log anything to the db if this flag is set
         socket.temporary = temporary;
@@ -394,7 +415,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('adduser', function(room, username, temporary, type, perspective){
         var id = 1;
 
-        if(username != "Rebo")
+        if(username !== "Rebo")
 	    {
 	        if(room in numUsers)
 			{		
@@ -446,10 +467,15 @@ io.sockets.on('connection', function (socket) {
         if(isBlank(username)) {
 	        origin = socket.handshake.address
 	        username = "Guest "+(origin.address+origin.port).substring(6).replace(/\./g, '');
-	    }
+	    } else {
+            username = filterNonASCII(username);
+        }
 	   
-        if(isBlank(room))
+        if(isBlank(room)) {
             room = "Limbo"
+        } else {
+            room = filterNonASCII(room);
+        }
 
         //don't log anything to the db if this flag is set
         socket.temporary = temporary;
@@ -542,7 +568,7 @@ io.sockets.on('connection', function (socket) {
 	// when the user disconnects... perform this
 	socket.on('disconnect', function()
 	{
-        if(socket.username != "Rebo" && socket.room in numUsers)
+        if(socket.username !== "Rebo" && socket.room in numUsers)
         {
         	numUsers[socket.room] = numUsers[socket.room] - 1; 
         }
