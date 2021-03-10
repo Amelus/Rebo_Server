@@ -2,7 +2,7 @@ FROM maven:3.5-jdk-8
 
 # Install maven
 RUN apt-get update
-RUN apt-get install -y netcat screen vim wget
+RUN apt-get install -y netcat screen vim nano wget
 
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
