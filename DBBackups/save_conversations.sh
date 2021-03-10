@@ -22,7 +22,7 @@ if [ "$(ls -A $backupDir)" ]; then
 	echo "Finished directory $uploadDir creation"
 	echo "Starting upload to Nextcloud $uploadDir"
 	export CLOUDSEND_PASSWORD=')5aYpg|dH8p7'
-        find $backupDir -iname '*.csv' -exec ./cloudsend.sh -p {} $uploadUrl \;
+        find $backupDir -iname '*.csv' -exec $HOME/Rebo_Server/DBBackups/cloudsend.sh -p {} $uploadUrl \;
 	echo "Upload finished"
 else
 	echo "$backupDir is Empty, directory will be removed and not uploaded"

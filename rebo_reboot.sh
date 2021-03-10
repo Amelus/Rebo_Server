@@ -1,6 +1,10 @@
 #!/bin/bash
 echo "Stopping Docker container"
-docker container stop 883c50e483cc
+cd /home/ahamidovic/Rebo_Server/
+/usr/local/bin/docker-compose stop
+sleep 15
+echo "Rebuilding Docker"
+/usr/local/bin/docker-compose build
 sleep 15
 echo "Starting container again"
-docker container start 883c50e483cc
+/usr/local/bin/docker-compose up -d
