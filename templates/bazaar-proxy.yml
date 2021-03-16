@@ -1,0 +1,6 @@
+build: ./ha-proxy
+image: bazaar/haproxy
+container_name: bazaar-haproxy
+ports:
+  - "80:80"
+  - "443:443"

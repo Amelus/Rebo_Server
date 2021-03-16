@@ -1,0 +1,17 @@
+templateFolderPath: ./templates/
+networks:
+  bazaar-net:
+    driver: bridge
+scenarios:
+  all:
+    - bazaar
+    - nodechat
+    - bazaar-proxy
+  backend:
+    - bazaar
+    - nodechat
+  database:
+    - nodechat
+  database-proxy:
+    - nodechat
+    - bazaar-proxy

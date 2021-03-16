@@ -1,46 +1,30 @@
-version: '3'
-volumes:
-  mysql_data:
- 
 services:
-  nodechat:
-    build:
-       context: ./
-       dockerfile: Dockerfile.mysql
-    container_name: nodechat
-    volumes:    
-     - mysql_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: smoot
-      MYSQL_USER: "local"
-      MYSQL_PASSWORD: "local"
-    ports:
-     - "8089:3306"  # let outside world see 8083
-    restart: always
-    networks:
-    - bazaar-net
   bazaar:
-    build: 
-       context: ./
-       dockerfile: Dockerfile
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: bazaar
     depends_on:
-     - nodechat
-    restart: always
-    networks:
-    - bazaar-net
-  front:
+    - nodechat
+  bazaar-proxy:
     build: ./ha-proxy
-    image: bazaar/haproxy
     container_name: bazaar-haproxy
+    image: bazaar/haproxy
     ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - bazaar
+    - 80:80
+    - 443:443
+  nodechat:
+    build:
+      context: ./
+      dockerfile: Dockerfile.mysql
+    container_name: nodechat
+    environment:
+      MYSQL_PASSWORD: local
+      MYSQL_ROOT_PASSWORD: smoot
+      MYSQL_USER: local
+    ports:
+    - 8089:3306
     restart: always
-    networks:
-      - bazaar-net
-networks:
-  bazaar-net:
-    driver: bridge
+    volumes:
+    - ./mysql_data:/var/lib/mysql
+version: "2"

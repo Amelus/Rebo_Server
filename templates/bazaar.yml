@@ -1,0 +1,6 @@
+build:
+  context: ./
+  dockerfile: Dockerfile
+container_name: bazaar
+depends_on:
+  - nodechat
