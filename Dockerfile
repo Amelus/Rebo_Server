@@ -12,7 +12,11 @@ RUN apt-get install -y x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable 
 
 WORKDIR /usr/bazaar/
 
-COPY . ./
+COPY bazaar bazaar/
+COPY killAll ./
+COPY mturkagent mturkagent/
+COPY runAll ./
+COPY runBazaar ./
 
 RUN cd bazaar && npm install && cd ..
 

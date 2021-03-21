@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const logger = require('./logger')
 
 var mysql      = require('mysql');
 var mysql_auth = {
@@ -20,21 +21,19 @@ function handleDisconnect() {
 
   connection.connect(function(err) {              // The server is either down
     if(err) {                                     // or restarting (takes a while sometimes).
-      console.log(new Date());
-      console.log('error when connecting to db:', err);
+      logger.error('error when connecting to db:', err);
       setTimeout(handleDisconnect, 5000); // We introduce a delay before attempting to reconnect,
     } else {
-      console.log(new Date());
-      console.log('New DB connection established');
+      logger.debug('New DB connection established');
     }                                     // to avoid a hot loop, and to allow our node script to
   });                                     // process asynchronous requests in the meantime.
                                           // If you're also serving http, display a 503 error.
   connection.on('error', function(err) {
-    console.log('db error', err);
+    logger.error('db error', err);
     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
         handleDisconnect();                         // lost due to either server restart, or a
     } else {
-	    console.log('unknown db connection error', err)                      // connnection idle timeout (the wait_timeout
+	    logger.error('unknown db connection error', err)                      // connnection idle timeout (the wait_timeout
 	    handleDisconnect();
     }
   });
@@ -60,13 +59,13 @@ app.use(bodyParser.urlencoded());
 
 app.get('/bazaar/room_status_all', function (req, res)
 {
-    console.log("app.get('/bazaar/room_status_all')");
+    logger.debug("app.get('/bazaar/room_status_all')");
     var connection = mysql.createConnection(mysql_auth);
     var query = 'SELECT name from nodechat.room';
-    console.log(query);
+    logger.debug(query);
     connection.query(query, function(err, rows, fields) {
         if(err) {
-            console.log(err);
+            logger.error(err);
             res.send(500, "<body><h2>Error</h2><p>Couldn't fetch data</p></body>");
         } else {
             var num_list = "";
@@ -78,14 +77,14 @@ app.get('/bazaar/room_status_all', function (req, res)
 
 app.get('/bazaar/room_status*', function (req, res)
 {
-    console.log("app.get('/bazaar/room_status*')");
+    logger.debug("app.get('/bazaar/room_status*')");
     var connection = mysql.createConnection(mysql_auth);
     var query = 'SELECT name from nodechat.room where name='+mysql.escape(req.query.roomId);
-    console.log(query);
+    logger.debug(query);
     connection.query(query, function(err, rows, fields) {
         if(err)
         {
-            console.log(err);
+            logger.error(err);
             res.send(500, "<body><h2>Error</h2><p>Couldn't fetch data</p></body>");
         }
         else if (rows.length==0)
@@ -183,7 +182,7 @@ function exportCSV(room, res, query)
     {
 
         if(err) {
-            console.log(err);
+            logger.error(err);
             res.send(501, header_stuff+"<body><h2>Export Error</h2><p>Couldn't fetch data for room '"+room+"':</p><pre>"+err+"</pre></body>");
         } else if(rows.length == 0) {
             res.send(404, header_stuff+"<body><h2>Empty Room</h2><p>Couldn't fetch data for empty room '"+room+"'.</p></body>");
@@ -243,7 +242,7 @@ function loadHistory(socket, secret)
                 +'where r.name='+connection.escape(socket.room)+' and not(m.type like "private") order by timestamp', function(err, rows, fields) 
                 {
                     if (err) 
-                        console.log(err);
+                        logger.error(err);
                         
                     socket.emit('dump_history', rows);
 		    
@@ -273,7 +272,7 @@ function logEssay(socket, content, type)
     connection.query('update nodechat.room set modified=now() where room.name='+connection.escape(socket.room)+';', function(err, rows, fields)
     {
         if (err) 
-            console.log(err);
+            logger.error(err);
     });
     
     endpoint = "unknown"
@@ -289,7 +288,7 @@ function logEssay(socket, content, type)
     connection.query(query, function(err, rows, fields) 
     {
         if (err) 
-        	console.log(err);
+        	logger.error(err);
     });
 }
 
@@ -299,6 +298,7 @@ function logMessage(socket, message, type)
     //    return;
 
     let filteredMessage = filterNonASCII(message);
+    logger.debug("Message: " + filteredMessage);
 
     if(socket.temporary) 
     	return;
@@ -306,7 +306,7 @@ function logMessage(socket, message, type)
     connection.query('update nodechat.room set modified=now() where room.name='+connection.escape(socket.room)+';', function(err, rows, fields)
     {
         if (err) 
-            console.log(err);
+            logger.error(err);
     });
     
     endpoint = "unknown"
@@ -322,7 +322,7 @@ function logMessage(socket, message, type)
     connection.query(query, function(err, rows, fields) 
     {
         if (err) 
-        	console.log(err);
+        	logger.error(err);
     });
     
 }
@@ -336,7 +336,7 @@ function checkChatbotFinished(room, callback) {
     connection.query(query, function(err, results) 
     {
         if (err) 
-            console.log(err);
+            logger.error(err);
 
         return callback(results)
     });
@@ -349,7 +349,7 @@ function checkEssayAlreadyWritten(room, callback) {
     connection.query(query, function(err, results) 
     {
         if (err) 
-            console.log(err);
+            logger.error(err);
 
         return callback(results)
     });
@@ -365,7 +365,7 @@ function checkFirstJoin(room, callback) {
     connection.query(query, function(err, results) 
     {
         if (err) 
-          console.log(err);
+          logger.error(err);
 
         return callback(results)
     });
@@ -419,6 +419,8 @@ io.sockets.on('connection', function (socket) {
 	socket.on('adduser', function(room, username, temporary, type, perspective){
         var id = 1;
 
+        logger.debug("Received add user command for room=" + room + " and username=" + username);
+
         if(username !== "Rebo")
 	    {
 	        if(room in numUsers)
@@ -436,15 +438,16 @@ io.sockets.on('connection', function (socket) {
                     count = result.length;
 
                     if (count < 2) {
+                        logger.debug("Launching new chat for room=" + room);
                         var script = 'sh ../mturkagent/launch_agent.sh ';
                         var command = script.concat(room);
                         exec(command, (error, stdout, stderr) => {
                             if (error) {
-                            console.error(`exec error: ${error}`);
-                            return;
+                                logger.error(`exec error: ${error}`);
+                                return;
                             }
-                            console.log(`stdout: ${stdout}`);
-                            console.log(`stderr: ${stderr}`);
+                            logger.debug(`stdout: ${stdout}`);
+                            logger.debug(`stderr: ${stderr}`);
                         });	
                     }
                 });
@@ -572,6 +575,7 @@ io.sockets.on('connection', function (socket) {
 	// when the user disconnects... perform this
 	socket.on('disconnect', function()
 	{
+	    logger.debug("User=" + socket.username + " disconnected from room=" + socket.room)
         if(socket.username !== "Rebo" && socket.room in numUsers)
         {
         	numUsers[socket.room] = numUsers[socket.room] - 1; 
@@ -599,8 +603,8 @@ io.sockets.on('connection', function (socket) {
 	       delete user_sockets[socket.room][socket.username];
 	    }
 	    
-	    if(socket.room)
-		  socket.leave(socket.room);
-	    
+	    if(socket.room) {
+            socket.leave(socket.room);
+        }
 	});
 });

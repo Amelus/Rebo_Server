@@ -24,6 +24,8 @@ services:
        context: ./
        dockerfile: Dockerfile
     container_name: bazaar
+    volumes:
+      - ./logs/backend:/usr/bazaar/mturkagent/logs
     depends_on:
      - nodechat
     restart: always
