@@ -2,3 +2,5 @@ mturkagent/logs/*
 mturkagent/behaviors/*
 mturkagent/dict/*
 mturkagent/planstatus/*
+bazaar/node_modules/*
+bazaar/node_modules/.bin/*
