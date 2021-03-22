@@ -147,10 +147,10 @@
                 }
 
                 socket.emit('adduser', room, user, false, type, perspective);
-                console.log(new Date() + " - Emitted -adduser- for room=" + room + ", user=" + user + ", type=" + type);
+                console.log(new Date() + " - [ADD USER] Room=" + room + ", User=" + user + ", Type=" + type);
             }
             else {
-                console.log(new Date() + " - Emitted snoop");
+                console.log(new Date() + " - [SNOOP]");
                 socket.emit('snoop', room, type);
                 $('input,textarea').prop('disabled', true);
             }
@@ -165,10 +165,10 @@
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
         socket.on('updatechat', function (username, data) {
-            console.log(new Date() + " - Update chat with username=" + username + " and data=" + data);
+            console.log(new Date() + " - [UPDATE CHAT] Username=" + username + ", Data=" + data);
             appendMessage(new Date(), username, data);
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
-            if (sessionStorage.getItem("demo_session") === "true") {
+            if (username === "Rebo" && sessionStorage.getItem("demo_session") === "true") {
                 sendDemoMessage();
             }
         });
@@ -205,13 +205,13 @@
 
         // listener, whenever the server emits 'updaterooms', this updates the room list
         socket.on('updaterooms', function (rooms, my_room) {
-            console.log(new Date() + " - Received updaterooms for room=", my_room);
+            console.log(new Date() + " - [UPDATE ROOMS] Room=", my_room);
             $('#roomname').text(my_room);
         });
 
         // listener, whenever the server emits 'updateimage', this updates the user list
         socket.on('updateusers', function (my_users) {
-            console.log(new Date() + " - Received updateusers");
+            console.log(new Date() + " - [UPDATE USERS]");
             users = my_users;
             console.log(users);
         });
@@ -230,7 +230,7 @@
         });
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
-        socket.on('update_private_chat', function (username, data, to_user) {
+        socket.on('update_private_chat', function (username, data) {
             appendMessage(new Date(), username + ' (Private Message)', data, getUserColor(username));
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
         });

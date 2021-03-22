@@ -273,11 +273,10 @@ function logMessage(socket, message, type) {
     //    return;
 
     let filteredMessage = filterNonASCII(message);
-    logger.debug("Sent message: " + filteredMessage + " with type= " + type + " for room=" + socket.room +
-        " and user=" + socket.username);
+    logger.debug("[" + socket.room + "," + socket.username + "]" +"Message: " + filteredMessage);
 
     if (socket.temporary) {
-        logger.debug("Temporary is set, no logging to DB")
+        logger.info("Temporary is set, no logging to DB")
         return;
     }
 
@@ -290,7 +289,6 @@ function logMessage(socket, message, type) {
     endpoint = "unknown"
 
     if (socket.handshake) {
-        logger.debug("Enpoint set to handshake address=" + socket.handshake.address);
         endpoint = socket.handshake.address;
     }
 
@@ -404,7 +402,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('adduser', function (room, username, temporary, type, perspective) {
         var id = 1;
 
-        logger.debug("Received add user command for room=" + room + " and username=" + username);
+        logger.debug("[ADD USER] Room=" + room + ", Username=" + username);
 
         if (username !== "Rebo") {
             if (room in numUsers) {
@@ -420,7 +418,7 @@ io.sockets.on('connection', function (socket) {
                     count = result.length;
 
                     if (count < 2) {
-                        logger.debug("Launching new chat for room=" + room);
+                        logger.debug("Launching new chat for Room=" + room);
                         var script = 'sh ../mturkagent/launch_agent.sh ';
                         var command = script.concat(room);
                         exec(command, (error, stdout, stderr) => {
@@ -493,8 +491,8 @@ io.sockets.on('connection', function (socket) {
         user_perspectives[room][username] = perspective;
 
         // send client to room 1
-        logger.debug("Performing socket join with user=" + socket.username + ", roomname="
-            + socket.room + " and roomID=" + socket.Id);
+        logger.debug("[SOCKET JOIN] Username=" + socket.username + ", Roomname="
+            + socket.room + ", RoomID=" + socket.Id);
         socket.join(room);
 
         if (!user_sockets[room])
@@ -506,6 +504,7 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('sendchat', function (data) {
+        logger.debug("[SEND CHAT] Room=" + socket.room + ", Username=" + socket.username);
         logMessage(socket, data, "text");
         io.sockets.in(socket.room).emit('updatechat', socket.username, data);
     });
@@ -516,29 +515,33 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('sendpm', function (data, to_user) {
+        logger.debug("[SEND PM] Room=" + socket.room + ", Username=" + socket.username + ", toUser=" + to_user);
         logMessage(socket, data, "private");
-        logger.debug(socket.username + " sent message=" + data + ", to user=" + to_user);
         if (socket.room in user_sockets && to_user in user_sockets[socket.room]) {
             user_sockets[socket.room][to_user].emit('update_private_chat', socket.username, data, to_user);
         }
     });
 
     socket.on('sendhtml', function (data) {
+        logger.debug("[SEND HTML] Room=" + socket.room + ", Username=" + socket.username);
         logMessage(socket, data, "html");
         io.sockets.in(socket.room).emit('updatehtml', socket.username, data);
     });
 
     socket.on('ready', function (data) {
+        logger.debug("[READY] Room=" + socket.room + ", Username=" + socket.username);
         logMessage(socket, data, "ready");
         io.sockets.in(socket.room).emit('updateready', socket.username, data);
     });
 
     socket.on('global_ready', function (data) {
+        logger.debug("[GLOBAL READY] Room=" + socket.room + ", Username=" + socket.username);
         logMessage(socket, "global " + data, "ready");
         io.sockets.in(socket.room).emit('update_global_ready', data);
     });
 
     socket.on('switchRoom', function (newroom) {
+        logger.debug("[SWITCH ROOM] Room=" + socket.room + ", New Room=" + newroom);
         if (socket.room in usernames && socket.username in usernames[socket.room])
             delete usernames[socket.room][socket.username];
         io.sockets.in(socket.room).emit('updateusers', usernames[socket.room]);
@@ -562,7 +565,7 @@ io.sockets.on('connection', function (socket) {
 
     // when the user disconnects... perform this
     socket.on('disconnect', function () {
-        logger.debug("User=" + socket.username + " disconnected from room=" + socket.room)
+        logger.debug("[DISCONNECT] Room=" + socket.room + ", Username=" + socket.username);
         if (socket.username !== "Rebo" && socket.room in numUsers) {
             numUsers[socket.room] = numUsers[socket.room] - 1;
         }
