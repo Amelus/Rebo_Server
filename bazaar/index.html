@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" type="text/css" href="/css/rebo.css" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type=""></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
+        type=""></script>
     <script type="text/javascript" src="/scripts/sortable.js"></script>
     <script type="text/javascript" src="/scripts/colors.js"></script>
     <script type="text/javascript" src="/bazsocket/socket.io.js"></script>
@@ -124,6 +125,8 @@
         // on connection to server, ask for user's name with an anonymous callback
         socket.on('connect', function () {
             // call the server-side function 'adduser' and send one parameter (value of prompt)
+            console.log(new Date() + " - Started socket connection");
+
             groups = /\/(chat|observe|code)(\/tmp)?(?:\/([^\/]+)?)(?:\/([^\/]*))(?:\/([^\/]*))(?:\/([^\/]*))?/.exec(location.pathname);
 
             live_chat = groups[1] == "chat";
@@ -134,19 +137,25 @@
             perspective = groups[6] || perspective;
 
             if (live_chat) {
-                if (user === "Anonymous")
+                if (user === "Anonymous") {
                     user = prompt("Hi! please enter your name (first name and last initial) to continue.", "");
-                
+                }
+                if (user === "Demo_Testing") {
+                    console.log("Demo session starting");
+                    $('input,textarea').prop('disabled', true);
+                }
+
                 socket.emit('adduser', room, user, false, type, perspective);
+                console.log(new Date() + " - Emitted -adduser- for room=" + room + ", user=" + user + ", type=" + type);
             }
             else {
+                console.log(new Date() + " - Emitted snoop");
                 socket.emit('snoop', room, type);
                 $('input,textarea').prop('disabled', true);
             }
             $('#roomname').text(room);
-            //document.getElementById('myIframe').src = "https://docs.google.com/document/d/1uONLY0NEAMBN5d-4NKNkqVrxU_LfQQORFEO5E9rkg0M/edit?usp=sharing";
 
-            if(type === "essay") {
+            if (type === "essay") {
                 console.log("Hide chat for essay");
                 hideChatForEssay();
             }
@@ -155,8 +164,12 @@
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
         socket.on('updatechat', function (username, data) {
+            console.log(new Date() + " - Update chat with username=" + username + " and data=" + data);
             appendMessage(new Date(), username, data);
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
+            if (username === "Rebo") {
+                sendDemoMessage();
+            }
         });
 
         socket.on('dump_history', function (backlog) {
@@ -191,11 +204,13 @@
 
         // listener, whenever the server emits 'updaterooms', this updates the room list
         socket.on('updaterooms', function (rooms, my_room) {
+            console.log(new Date() + " - Received updaterooms for room=", my_room);
             $('#roomname').text(my_room);
         });
 
         // listener, whenever the server emits 'updateimage', this updates the user list
         socket.on('updateusers', function (my_users) {
+            console.log(new Date() + " - Received updateusers");
             users = my_users;
             console.log(users);
         });
@@ -203,7 +218,7 @@
         // listener, whenever the server emits 'updatepresence', this updates the image list
         socket.on('updatepresence', function (username, data) {
             appendNote(new Date(), username, (data == "leave" ? " has disconnected." : " has joined the chat."));
-            $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);          
+            $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
         });
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
@@ -214,23 +229,26 @@
         });
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
-        socket.on('update_private_chat', function (username, data) {
+        socket.on('update_private_chat', function (username, data, to_user) {
             appendMessage(new Date(), username + ' (Private Message)', data, getUserColor(username));
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
+            if (to_user === "Demo_Testing") {
+                sendDemoMessage();
+            }
         });
 
-        socket.on('lockTextArea', function(data){
-            console.log("Got lockTextArea");
+        socket.on('lockTextArea', function (data) {
+            console.log(new Date() + " - Got lockTextArea");
             console.log(data);
             $('input,textarea').prop('disabled', true);
         });
 
-        socket.on('essayTypeMode', function(data){
+        socket.on('essayTypeMode', function (data) {
             console.log("Got essayTypeMode");
             hideChatForEssay();
         });
 
-        socket.on('essayFinished', function(data){
+        socket.on('essayFinished', function (data) {
             console.log("Essay Finished => locked chat");
             essayFinished();
         });
@@ -256,16 +274,17 @@
         }
 
         function sendReady(is_ready) {
+            console.log(new Date() + " - Emitting ready=", is_ready);
             socket.emit('ready', is_ready ? 'ready' : 'unready'); //'ready' or 'unready'
         }
 
         function sendMessage() {
             var confirm = true;
-            if(type === "essay") {
+            if (type === "essay") {
                 confirm = window.confirm("Sind Sie wirklich fertig mit dem ganzen Essay?");
             }
 
-            if(confirm == true) {
+            if (confirm === true) {
                 console.log("Confirm end of essay");
                 var message = $('#data').val();
 
@@ -273,7 +292,7 @@
 
                 message = escapeHTML(message)
 
-                if(type === "essay") {
+                if (type === "essay") {
                     essayFinished();
                     socket.emit('essaySend', message);
                 } else if (message && message.length > 0) {
@@ -282,6 +301,12 @@
                 $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
             }
 
+        }
+
+        function sendDemoMessage() {
+            window.setTimeout(function (){}, 3000);
+            socket.emit('sendchat', "Demo message for simplistic automatic Rebo testing");
+            $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
         }
 
         function shareImage() {
@@ -350,7 +375,7 @@
     </script>
 
     <IMG id=logo SRC="/logo/reboLogo.png" ALT="Rebo Logo" WIDTH=8%>
-    
+
     <div id="everything">
 
         <div id="conversation_column">

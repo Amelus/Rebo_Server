@@ -25,7 +25,8 @@ services:
        dockerfile: Dockerfile
     container_name: bazaar
     volumes:
-      - ./logs/backend:/usr/bazaar/mturkagent/logs
+      - ./logs/rebo_jar:/usr/bazaar/mturkagent/logs
+      - ./logs/nodejs:/usr/bazaar/logs
     depends_on:
      - nodechat
     restart: always
