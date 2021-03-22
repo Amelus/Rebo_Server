@@ -142,6 +142,7 @@
                 }
                 if (user === "Demo_Testing") {
                     console.log("Demo session starting");
+                    sessionStorage.setItem("demo_session", "true");
                     $('input,textarea').prop('disabled', true);
                 }
 
@@ -167,7 +168,7 @@
             console.log(new Date() + " - Update chat with username=" + username + " and data=" + data);
             appendMessage(new Date(), username, data);
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
-            if (username === "Rebo") {
+            if (sessionStorage.getItem("demo_session") === "true") {
                 sendDemoMessage();
             }
         });
@@ -223,7 +224,7 @@
 
         // listener, whenever the server emits 'updatechat', this updates the chat body
         socket.on('update_global_ready', function (ready_state) {
-            if (ready_state == 'unready') {
+            if (ready_state === 'unready') {
                 $('#ready_button').removeClass("toggled");
             }
         });
@@ -232,9 +233,6 @@
         socket.on('update_private_chat', function (username, data, to_user) {
             appendMessage(new Date(), username + ' (Private Message)', data, getUserColor(username));
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
-            if (to_user === "Demo_Testing") {
-                sendDemoMessage();
-            }
         });
 
         socket.on('lockTextArea', function (data) {
@@ -304,8 +302,9 @@
         }
 
         function sendDemoMessage() {
-            window.setTimeout(function (){}, 3000);
-            socket.emit('sendchat', "Demo message for simplistic automatic Rebo testing");
+            window.setTimeout(function (){
+                socket.emit('sendchat', "Demo message for simplistic automatic Rebo testing");
+            }, 5000);
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
         }
 
