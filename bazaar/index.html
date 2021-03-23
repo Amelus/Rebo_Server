@@ -303,7 +303,7 @@
 
         function sendDemoMessage() {
             window.setTimeout(function (){
-                socket.emit('sendchat', "Demo message for simplistic automatic Rebo testing");
+                socket.emit('sendchat', "Hi Rebo: Demo message for simplistic automatic Rebo testing");
             }, 5000);
             $('#conversation_container').stop().animate({ scrollTop: $("#conversation_container")[0].scrollHeight }, 500);
         }
