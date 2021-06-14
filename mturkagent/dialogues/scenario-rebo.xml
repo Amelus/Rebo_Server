@@ -98,7 +98,7 @@
         </concept>
 
         <concept label="noEmotionExp">
-            <phrase>Schade. Warum hat es dir denn nicht gefallen?</phrase>
+            <phrase>Schade :/ | Warum hat es dir denn nicht gefallen?</phrase>
         </concept>
 
         <concept label="negativeEmotionReaction">
@@ -119,7 +119,7 @@
         </concept>
 
         <concept label="negativeLearningRecognized">
-            <phrase>Schade :/ | Was war denn heute neu für dich?</phrase>
+            <phrase>Was war denn heute neu für dich?</phrase>
         </concept>
 
         <concept label="fakeLearning">
