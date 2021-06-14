@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7235b536-5c64-4a0a-83e7-a10ca477aade" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7c2c07d05f783dc0d1bb5c8016076be6d6917b7a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/83b04b823155e09d40ad292bfb0966a43882b085" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/f/8f2dd87ed12e02edcc8ebb66fb8e67c6ddc247a3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/2/92cfa98795798528e579ba943d9694eb9588c1e1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>gut</find>
+      <find>schert</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/mturkagent/dictionaries/positive.txt" />
+        <option value="$PROJECT_DIR$/mturkagent/dictionaries/negative.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="width" value="1906" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectId" id="1nb8puWF0BCiD1iIJ8XUL6kSf70" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Rebo_Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rebo_Server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rebo_Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rebo_Server" type="462c0819:PsiDirectoryNode" />
+              <item name="mturkagent" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1605568097916" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/MA/data/2020-12-03_11_48.sql" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Users\ahamidovic\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.6682.168\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunManager" selected="Shell Script.runScript">
+    <configuration name="runScript" type="ShConfigurationType" temporary="true">
+      <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/bazaar/runScript" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/bazaar" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose-base.yml.nodechat: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="nodechat" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose-base.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.docker-compose-base.yml.nodechat: Compose Deployment" />
+      <item itemvalue="Shell Script.runScript" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.runScript" />
+        <item itemvalue="Docker.docker-compose-base.yml.nodechat: Compose Deployment" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7235b536-5c64-4a0a-83e7-a10ca477aade" name="Default Changelist" comment="" />
+      <created>1604562770035</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604562770035</updated>
+      <workItem from="1604562771443" duration="272000" />
+      <workItem from="1605567389341" duration="1278000" />
+      <workItem from="1606923784687" duration="5099000" />
+      <workItem from="1606982415378" duration="702000" />
+      <workItem from="1607370241541" duration="587000" />
+      <workItem from="1607424389715" duration="587000" />
+      <workItem from="1611647622020" duration="813000" />
+      <workItem from="1611651963388" duration="4055000" />
+      <workItem from="1613120849171" duration="10000" />
+      <workItem from="1614347484278" duration="22701000" />
+      <workItem from="1615269464135" duration="1535000" />
+      <workItem from="1615271236558" duration="591000" />
+      <workItem from="1615355926123" duration="1495000" />
+      <workItem from="1615548145303" duration="112000" />
+      <workItem from="1615754793547" duration="3764000" />
+      <workItem from="1615911312457" duration="8224000" />
+      <workItem from="1616228502845" duration="4809000" />
+      <workItem from="1616313841415" duration="9700000" />
+      <workItem from="1621604182700" duration="762000" />
+      <workItem from="1623274002365" duration="1225000" />
+    </task>
+    <task id="LOCAL-00001" summary="General update of Rebo">
+      <created>1604563011497</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604563011497</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added description scenario and updated Agent.jar">
+      <created>1605567503708</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605567503708</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added gitignore file and added some IntelliJ files">
+      <created>1605568027716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605568027716</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changed scenario to make emotions subgoal of neutral judgement">
+      <created>1611652068966</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611652068966</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Updated reaction to pos and neg judgement">
+      <created>1611653110554</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611653110554</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated again reaction to pos and neg judgement">
+      <created>1611654429039</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611654429039</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed non UTF8 character in Rebo response">
+      <created>1611656659563</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611656659563</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added concept &quot;revisit&quot;">
+      <created>1614348600112</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614348600113</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added non-ASCII filtering for username, room and message">
+      <created>1614362183945</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1614362183945</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fxied non-ASCII replacement">
+      <created>1614363345396</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614363345396</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added revisit as a &lt;step&gt;">
+      <created>1614375848874</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614375848874</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Removed phrases in judgement and learning, fixed &quot;poke&quot; message property">
+      <created>1615119771472</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1615119771472</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added templates and container-juggler stuff">
+      <created>1615923663830</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1615923663830</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added logger-js and adjustments">
+      <created>1616320621002</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1616320621003</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8525000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="0" width="1906" height="1056" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.108342364" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="SonarLint" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="General update of Rebo" />
+    <MESSAGE value="Added description scenario and updated Agent.jar" />
+    <MESSAGE value="Added gitignore file and added some IntelliJ files" />
+    <MESSAGE value="Changed scenario to make emotions subgoal of neutral judgement" />
+    <MESSAGE value="Updated reaction to pos and neg judgement" />
+    <MESSAGE value="Updated again reaction to pos and neg judgement" />
+    <MESSAGE value="Fixed non UTF8 character in Rebo response" />
+    <MESSAGE value="Added concept &quot;revisit&quot;" />
+    <MESSAGE value="Added non-ASCII filtering for username, room and message" />
+    <MESSAGE value="Fxied non-ASCII replacement" />
+    <MESSAGE value="Added revisit as a &lt;step&gt;" />
+    <MESSAGE value="Removed phrases in judgement and learning, fixed &quot;poke&quot; message property" />
+    <MESSAGE value="Added templates and container-juggler stuff" />
+    <MESSAGE value="Added logger-js and adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logger-js and adjustments" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mturkagent/dictionaries/planning.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mturkagent/dictionaries/positive.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="796">
+          <caret line="3423" column="21" selection-start-line="3423" selection-start-column="21" selection-end-line="3423" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mturkagent/dictionaries/negative.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="762">
+          <caret line="5301" column="16" selection-start-line="5301" selection-start-column="16" selection-end-line="5301" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
